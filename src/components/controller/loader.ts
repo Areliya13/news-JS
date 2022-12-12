@@ -1,10 +1,5 @@
-enum Endpoints{
-  sources = 'sources',
-  everything = 'everything',
-  topHeadliners = 'top-headlines',
-}
-
-type Options = { [key: string]: string };
+import {Options, Result} from '../dataTypes'
+import {Endpoints} from '../enums'
 
 class Loader {
 
@@ -25,7 +20,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res) {
+    errorHandler(res: Result) {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -46,7 +41,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: Endpoints, callback: { (arg0?: string): void }, options = {}) {
+    load(method: string, endpoint: Endpoints, callback: { (value?: string): void | undefined}, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
