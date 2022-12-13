@@ -7,6 +7,8 @@ type Article = Pick<
   'source' | 'author' | 'content' | 'description' | 'publishedAt' | 'title' | 'url' | 'urlToImage'
 >;
 
+type Callback<T> = (data?: T) => void;
+
 type Result = {
   json(): Promise<string>;
   readonly type: string;
@@ -18,4 +20,4 @@ type Result = {
   readonly statusText: string;
 };
 
-export {Options, Article, Result}
+export {Options, Article, Result, Callback}

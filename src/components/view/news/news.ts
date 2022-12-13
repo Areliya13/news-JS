@@ -1,5 +1,4 @@
 import './news.css';
-import { Data } from '../../intrerfaces';
 import { Article } from '../../dataTypes';
 
 class News {

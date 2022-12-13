@@ -18,4 +18,19 @@ interface Data {
   articles: [Info];
 }
 
-export {Data, Info}
+interface Source {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  language: string;
+  country: string;
+}
+
+interface DataSources {
+  status: string;
+  sources?: [Source];
+}
+
+export {Data, Info, Source, DataSources}

@@ -1,5 +1,6 @@
 import {Options, Result} from '../dataTypes'
 import {Endpoints} from '../enums'
+import { Callback } from '../dataTypes';
 
 class Loader {
 

@@ -1,9 +1,10 @@
 import AppLoader from './appLoader';
 import {Endpoints} from '../enums'
 import {Data} from '../intrerfaces'
+import { Callback } from '../dataTypes';
 
 class AppController extends AppLoader {
-    getSources(callback: ((value?: Data) => void | undefined)) {
+    getSources(callback: (Callback<Data> | undefined)) {
         super.getResp(
             {
                 endpoint: Endpoints.sources,
@@ -12,30 +13,32 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: ((value?: Data) => void | undefined)) {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e: Event, callback: (Callback<Data> | undefined)) {
+        let target = <HTMLElement>e.target;
+        const newsContainer = <HTMLElement>e.currentTarget;
 
         while (target !== newsContainer) {
-            if (typeof target !== 'object'){
+            // if (target){
                 if (target.classList.contains('source__item')) {
                     const sourceId = target.getAttribute('data-source-id');
-                    if (newsContainer.getAttribute('data-source') !== sourceId) {
-                        newsContainer.setAttribute('data-source', sourceId);
-                        super.getResp(
-                            {
-                                endpoint: 'everything',
-                                options: {
-                                    sources: sourceId,
+                    if (sourceId)
+                        if (newsContainer.getAttribute('data-source') !== sourceId) {
+                            newsContainer.setAttribute('data-source', sourceId);
+                            super.getResp(
+                                {
+                                    endpoint: Endpoints.everything,
+                                    options: {
+                                        sources: sourceId,
+                                    },
                                 },
-                            },
-                            callback
-                        );
-                    }
+                                callback
+                            );
+                        }
                     return;
                 }
+                // if (target)
                 target = target.parentNode;
-            }
+            // }
         }
     }
 }
