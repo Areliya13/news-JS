@@ -39,8 +39,12 @@ footer .copyright:before {
 }
 .rsschool{
     background-image: url('./svg/rsschool_small.svg');
-    margin-left: 5px;
+    margin-right: 5px;
 }
+.github{
+    background-image: url('./svg/Octocat.svg');
+    margin-left: 5px;
+  }
 .icon {
   width: 32px;
   height: 32px;

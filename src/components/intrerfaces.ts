@@ -28,9 +28,15 @@ interface Source {
   country: string;
 }
 
+interface Language {
+  id: number;
+  name: string;
+  code: string;
+}
+
 interface DataSources {
   status: string;
   sources?: [Source];
 }
 
-export {Data, Info, Source, DataSources}
+export {Data, Info, Source, DataSources, Language}

@@ -1,9 +1,14 @@
 import AppLoader from './appLoader';
-import {Endpoints} from '../enums'
+import {Endpoints, Languages} from '../enums'
 import {Data} from '../intrerfaces'
 import { Callback } from '../dataTypes';
+// import LanguagesData from '../view/languages/languagesData';
+import { chosenLanguage } from '../view/languages/chosenLanguage';
+
 
 class AppController extends AppLoader {
+    // _chosenLanguage: string = 'en';
+
     getSources(callback: (Callback<Data> | undefined)) {
         super.getResp(
             {
@@ -28,6 +33,7 @@ class AppController extends AppLoader {
                                 endpoint: Endpoints.everything,
                                 options: {
                                     sources: sourceId,
+                                    language: chosenLanguage,
                                 },
                             },
                             callback

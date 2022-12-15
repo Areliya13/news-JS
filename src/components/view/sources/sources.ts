@@ -6,6 +6,7 @@ class Sources {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
 
+        console.dir(sourceItemTemp);
         data.forEach((item) => {
             const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
 

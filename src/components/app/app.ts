@@ -1,5 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
+import { getLanguage } from '../view/languages/chosenLanguage';
+import LanguagesData from '../view/languages/languagesData';
 
 class App {
     protected controller;
@@ -18,6 +20,8 @@ class App {
         } else {
             console.log('No element with class "sources"!');
         }
+        this.view.drawLanguages(LanguagesData);
+        getLanguage();
     }
 }
 
