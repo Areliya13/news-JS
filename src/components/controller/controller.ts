@@ -1,15 +1,13 @@
 import AppLoader from './appLoader';
-import {Endpoints, Languages} from '../enums'
-import {Data} from '../intrerfaces'
+import { Endpoints } from '../enums'
+import { Data } from '../intrerfaces'
 import { Callback } from '../dataTypes';
-// import LanguagesData from '../view/languages/languagesData';
 import { chosenLanguage } from '../view/languages/chosenLanguage';
 
 
 class AppController extends AppLoader {
-    // _chosenLanguage: string = 'en';
 
-    getSources(callback: (Callback<Data> | undefined)) {
+    getSources(callback: (Callback<Data> | undefined)) : void {
         super.getResp(
             {
                 endpoint: Endpoints.sources,
@@ -18,13 +16,13 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: (Callback<Data> | undefined)) {
-        let target = <HTMLElement>e.target;
-        const newsContainer = <HTMLElement>e.currentTarget;
+    getNews(e: Event, callback: (Callback<Data> | undefined)) : void {
+        let target: HTMLElement = <HTMLElement>e.target;
+        const newsContainer: HTMLElement = <HTMLElement>e.currentTarget;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
+                const sourceId: string | null = target.getAttribute('data-source-id');
                 if (sourceId)
                     if (newsContainer.getAttribute('data-source') !== sourceId) {
                         newsContainer.setAttribute('data-source', sourceId);

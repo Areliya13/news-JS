@@ -4,16 +4,16 @@ import { getLanguage } from '../view/languages/chosenLanguage';
 import LanguagesData from '../view/languages/languagesData';
 
 class App {
-    protected controller;
-    protected view;
+    protected controller: AppController;
+    protected view: AppView;
 
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
     }
 
-    start() {
-        const element = document.querySelector('.sources')
+    start() : void {
+        const element: Element | null = document.querySelector('.sources')
         if (element){
             element.addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
             this.controller.getSources((data) => this.view.drawSources(data));

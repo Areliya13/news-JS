@@ -1,10 +1,10 @@
-enum Endpoints{
+enum Endpoints {
   sources = 'sources',
   everything = 'everything',
   topHeadliners = 'top-headlines',
 }
 
-enum Languages{
+enum Languages {
   Arabic = 'ar',
   German = 'de',
   English = 'en',
@@ -20,4 +20,4 @@ enum Languages{
   Chinese = 'zh',
 }
 
-export {Endpoints, Languages}
+export { Endpoints, Languages }

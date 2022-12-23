@@ -20,4 +20,4 @@ type Result = {
   readonly statusText: string;
 };
 
-export {Options, Article, Result, Callback}
+export { Options, Article, Result, Callback }

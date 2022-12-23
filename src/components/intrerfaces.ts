@@ -39,4 +39,4 @@ interface DataSources {
   sources?: [Source];
 }
 
-export {Data, Info, Source, DataSources, Language}
+export { Data, Info, Source, DataSources, Language }

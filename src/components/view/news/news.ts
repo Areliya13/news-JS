@@ -2,18 +2,18 @@ import './news.css';
 import { Article } from '../../dataTypes';
 
 class News {
-    draw(data: [Article] | never[]) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data: [Article] | never[]) : void {
+        const news: Article[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
-        const fragment = document.createDocumentFragment();
-        const newsItemTemp = <HTMLTemplateElement>document.querySelector('#newsItemTemp');
+        const fragment: DocumentFragment = document.createDocumentFragment();
+        const newsItemTemp: HTMLTemplateElement = <HTMLTemplateElement>document.querySelector('#newsItemTemp');
 
         news.forEach((item, idx) => {
 
             if (!newsItemTemp) {
                 console.log('Error of #newsItemTemp')
             } else {
-                const newsClone = <HTMLElement>newsItemTemp.content.cloneNode(true);
+                const newsClone: HTMLElement = <HTMLElement>newsItemTemp.content.cloneNode(true);
 
                 if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
 
@@ -35,7 +35,7 @@ class News {
                 fragment.append(newsClone);
             }
         });
-        const container = document.querySelector('.news');
+        const container: Element | null = document.querySelector('.news');
         if ( !container ){
             console.log('No such element exists!');
         } else {

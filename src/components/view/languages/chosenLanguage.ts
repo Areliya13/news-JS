@@ -2,8 +2,8 @@ import LanguagesData from "./languagesData";
 
 let chosenLanguage = 'en';
 
-function getLanguage(){
-  const langs = document.querySelectorAll('.language__item');
+function getLanguage() : void {
+  const langs: NodeListOf<Element> = document.querySelectorAll('.language__item');
   langs.forEach((el, iter) => {
     el.addEventListener('click', () => {
       langs.forEach(val => {
@@ -16,4 +16,4 @@ function getLanguage(){
   })
 }
 
-export {chosenLanguage, getLanguage}
+export { chosenLanguage, getLanguage }

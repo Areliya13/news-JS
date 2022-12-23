@@ -2,18 +2,12 @@ import './languages.css';
 import { Language } from '../../intrerfaces';
 
 class Languages {
-    draw(data: Language[]) {
-        const fragment = document.createDocumentFragment();
-        const languageItemTemp = <HTMLTemplateElement>document.querySelector('#languageItemTemp');
-        // console.dir(<HTMLElement>languageItemTemp);
-
-        // console.log(data);
+    draw(data: Language[]) : void {
+        const fragment: DocumentFragment = document.createDocumentFragment();
+        const languageItemTemp: HTMLTemplateElement = <HTMLTemplateElement>document.querySelector('#languageItemTemp');
         data.forEach((item) => {
-          // console.log(item);
-            const languageClone = <HTMLElement>languageItemTemp.content.cloneNode(true);
-          // console.dir(languageClone);
-          const itemNameElement = languageClone.querySelector('.language__item-name');
-          // console.dir(itemNameElement);
+            const languageClone: HTMLElement = <HTMLElement>languageItemTemp.content.cloneNode(true);
+            const itemNameElement: HTMLElement | null = languageClone.querySelector('.language__item-name');
             if (itemNameElement) {
                 itemNameElement.textContent = item.name;
             }
@@ -25,7 +19,7 @@ class Languages {
             fragment.append(languageClone);
         });
 
-        const languagesElement = document.querySelector('.languages');
+        const languagesElement: HTMLElement | null = document.querySelector('.languages');
         if (languagesElement?.children) {
             languagesElement?.append(fragment);
         }
