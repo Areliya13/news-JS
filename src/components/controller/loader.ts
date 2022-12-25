@@ -41,7 +41,7 @@ class Loader {
     }
 
     load(method: string, endpoint: Endpoints, callback: { (value?: string): void | undefined}, options = {}) : void {
-        fetch(this.makeUrl(options, endpoint), { method })
+        fetch(this.makeUrl(options, endpoint), { method, headers: { 'Access-Control-Allow-Headers': "*, Authorization", 'Access-Control-Allow-Origin': "https://nodenews.up.railway.app/", 'Access-Control-Allow-Credentials': "true"} })
             .then(this.errorHandler)
             .then((res) => res.json())
             .then((data) => callback(data))
